@@ -22,7 +22,7 @@ export default class App extends React.Component {
     this.state = {
       modalVisible:false,
       color: "",
-      manufacturer: ""
+      license: ""
     }
     
     AsyncStorage.getItem('@Carma:vid').then((value) => {
@@ -35,7 +35,7 @@ export default class App extends React.Component {
   }
 
   getStateStr = () => {
-    return JSON.stringify({color: this.state.color, manufacturer: this.state.manufacturer});
+    return JSON.stringify({color: this.state.color, license: this.state.license});
   }
 
   handleNavigationStateChange = (state) =>{
@@ -62,7 +62,7 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>This is Garrett's test app</Text>
+        <Text>Carma</Text>
         <Text>{this.state.vid? "Your vehicle id is: " + this.state.vid : "You have not yet registered your vehicle"}</Text>
         <TextInput
           onChangeText={(color) => this.setState({color})}
@@ -71,9 +71,9 @@ export default class App extends React.Component {
           style={{height:30, width:300, backgroundColor: "#ededed"}}
           />
         <TextInput
-          onChangeText={(manufacturer) => this.setState({manufacturer})}
-          value={this.state.manufacturer}
-          placeholder="Manufacturer"
+          onChangeText={(license) => this.setState({license})}
+          value={this.state.license}
+          placeholder="License Plate"
           style={{height:30, width:300, backgroundColor: "#ededed"}}
           />
         <Button title="Register your vehicle" onPress={() => { this.setModalVisible(true) }}></Button>
