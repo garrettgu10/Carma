@@ -9,6 +9,8 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.58.1",
+    "react-native-speech": "^0.1.2",
+    "react-native-tts": "^2.0.0",
     "react-native-voice": "^0.2.6",
     "rn-webview": "^0.1.0"
   },

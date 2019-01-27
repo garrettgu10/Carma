@@ -1,0 +1,1 @@
+export default HOSTNAME = "https://getcarma.org";

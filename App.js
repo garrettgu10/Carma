@@ -3,6 +3,7 @@ import { Modal, StyleSheet, Text, Button, View, TextInput } from 'react-native';
 import WebView from 'rn-webview';
 import {AsyncStorage} from 'react-native';
 import Registered from "./Registered";
+import HOSTNAME from "./HOSTNAME";
 
 function getUrlVars(location) {
   var vars = {};
@@ -14,7 +15,7 @@ function getUrlVars(location) {
 
 export default class App extends React.Component {
 
-  serverRedirectURI = "http://localhost/auth_token";
+  serverRedirectURI = HOSTNAME+"/auth_token";
 
   constructor() {
     super();
@@ -60,23 +61,25 @@ export default class App extends React.Component {
         deleteRegistration={this.deleteRegistration}/>)
     }
 
+    console.warn(this.serverRedirectURI)
+
     return (
       <View style={styles.container}>
-        <Text>Carma</Text>
-        <Text>{this.state.vid? "Your vehicle id is: " + this.state.vid : "You have not yet registered your vehicle"}</Text>
+        <Text style={{fontSize:60}}>Welcome.</Text>
+        <Text style={{marginTop:15}}>{this.state.vid? "Your vehicle id is: " + this.state.vid : "You have not yet registered your vehicle."}</Text>
         <TextInput
           onChangeText={(color) => this.setState({color})}
           value={this.state.color}
           placeholder="Color"
-          style={{height:30, width:300, backgroundColor: "#ededed"}}
+          style={{marginTop: 15, height:50, width:300}}
           />
         <TextInput
           onChangeText={(license) => this.setState({license})}
           value={this.state.license}
           placeholder="License Plate"
-          style={{height:30, width:300, backgroundColor: "#ededed"}}
+          style={{height:50, width:300}}
           />
-        <Button title="Register your vehicle" onPress={() => { this.setModalVisible(true) }}></Button>
+        <Button style={{marginTop: 15}} title="Register" onPress={() => { this.setModalVisible(true) }}></Button>
         <Modal
           animationType="slide"
           transparent={false}
@@ -109,6 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20
   },
 });
 
